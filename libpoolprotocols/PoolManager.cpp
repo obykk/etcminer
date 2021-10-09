@@ -197,9 +197,9 @@ void PoolManager::setClientHandlers()
         if (newDiff || newEpoch)
             showMiningAt();
 
-        cnote << "Job: " EthWhite << m_currentWp.header.abridged()
-              << (m_currentWp.block != -1 ? (" block " + to_string(m_currentWp.block)) : "")
-              << EthReset << " " << m_selectedHost;
+        //cnote << "Job: " EthWhite << m_currentWp.header.abridged()
+        //      << (m_currentWp.block != -1 ? (" block " + to_string(m_currentWp.block)) : "")
+        //      << EthReset << " " << m_selectedHost;
 
         Farm::f().setWork(m_currentWp);
     });
