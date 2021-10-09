@@ -12,6 +12,7 @@ list(APPEND CUDA_NVCC_FLAGS_DEBUG -G)
 if(COMPUTE AND (COMPUTE GREATER 0))
 	list(APPEND CUDA_NVCC_FLAGS "-gencode arch=compute_${COMPUTE},code=sm_${COMPUTE}")
 else()
+	# Compute Capability list: https://developer.nvidia.com/cuda-gpus
 	if (CUDA_VERSION VERSION_LESS 11.0)
 		list(APPEND CUDA_NVCC_FLAGS "-gencode arch=compute_30,code=sm_30")
 	endif()
@@ -35,6 +36,9 @@ else()
 	if(NOT CUDA_VERSION VERSION_LESS 11.1)
 		# Tesla GA10x cards, RTX Ampere – RTX 3080/3090, RTX A6000, RTX A40
 		list(APPEND CUDA_NVCC_FLAGS "-gencode arch=compute_86,code=sm_86")
+	endif()
+	if(NOT CUDA_VERSION VERSION_LESS 11.4)
+		list(APPEND CUDA_NVCC_FLAGS "-gencode arch=compute_87,code=sm_87")
 	endif()
 endif()
 
